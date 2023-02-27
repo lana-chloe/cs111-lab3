@@ -6,6 +6,21 @@ else
 	LDFLAGS = -lrt -pthread -Wl,-O1,--sort-common,--as-needed,-z,relro,-z,now
 endif
 
+# Credit to ZHANG, PAUL on Piazza for sharing this setup for detecting
+# concurrency issues.
+TSAN = -fsanitize=thread -fsanitize=undefined -g3 -Og
+ASAN = -fsanitize=address -fsanitize=undefined -g3 -Og
+
+# Use TSAN to detect data races, ASAN to detect memory leaks
+ifeq ($(SAN),tsan)
+	SANITIZE = $(TSAN)
+else ifeq ($(SAN),asan)
+	SANITIZE = $(ASAN)
+endif
+
+CFLAGS += $(SANITIZE)
+LDFLAGS += $(SANITIZE)
+# END ZHANG, PAUL's setup
 
 OBJS = \
   hash-table-common.o \
