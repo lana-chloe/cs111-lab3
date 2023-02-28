@@ -62,7 +62,7 @@ The second implementation uses multiple mutexes to achieve concurrency. Instead 
 ### Performance
 
   > ./hash-table-tester -t 4 -s 100000
-  
+
   Generation: 69,011 usec
   Hash table base: 1,072,267 usec
     - 0 missing
