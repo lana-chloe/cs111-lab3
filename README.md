@@ -14,6 +14,7 @@ To build the program, run
 ## Running
 
   > ./hash-table-tester -t 8 -s 50000
+
   Generation: 68,319 usec
   Hash table base: 1,203,667 usec
     - 0 missing
@@ -31,6 +32,7 @@ The first implementation uses a single mutex. It is a simple, course-grained loc
 Low number of threads: 
 
   > ./hash-table-tester -t 1 -s 100000
+
   Generation: 17,262 usec
   Hash table base: 49,747 usec
     - 0 missing
@@ -40,6 +42,7 @@ Low number of threads:
 High number of threads:   
 
   > ./hash-table-tester -t 4 -s 100000
+
   Generation: 68,158 usec
   Hash table base: 1,238,591 usec
     - 0 missing
@@ -59,6 +62,7 @@ The second implementation uses multiple mutexes to achieve concurrency. Instead 
 ### Performance
 
   > ./hash-table-tester -t 4 -s 100000
+  
   Generation: 69,011 usec
   Hash table base: 1,072,267 usec
     - 0 missing
